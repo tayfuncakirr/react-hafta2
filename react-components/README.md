@@ -1,5 +1,30 @@
 # React + Vite
 
+
+Bu proje, React’in temel kavramlarını öğrenmek amacıyla geliştirilmiş basit bir sayaç uygulamasıdır.
+Uygulama, kullanıcıya sayacı artırma, azaltma ve sıfırlama işlemleri yapma imkânı sağlar.
+
+Kullanılan Teknolojiler
+React
+
+JavaScript (ES6+)
+
+Vite
+
+CSS
+
+Konular
+JSX kullanımı
+
+Function component yapısı
+
+useState ile state yönetimi
+
+Event handling (onClick vb.)
+
+Basit stil ekleme
+
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
