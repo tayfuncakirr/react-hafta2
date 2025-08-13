@@ -4,6 +4,15 @@
   padding: 2rem;
   text-align: center;
 }
+.container {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  gap:50px;
+  text-align: left;
+  
+  
+}
 
 .logo {
   height: 6em;
