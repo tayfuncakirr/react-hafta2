@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Form from "./Form";
 import './App.css'
 
 //useState nedir ? useState, React'te bir bileşenin durumunu yönetmek için kullanılan bir Hook'tur.
@@ -26,31 +27,37 @@ function App(){
   }
   return(
      //yukarıda tanımladığımız değer obje ise, değeri { } süslü parantezler içinde alıyoruz.-
-    <div>
+    <div className="app-container">
            
-         <div>
+         <div className="user-container">
           <h3>User</h3>
            Kullanıcı Adı: {userInfo.username} <br /> 
           Şifre:{userInfo.password}       
          </div>
 
           <hr />
-        
-         <h3>Liste</h3>
+        <div className="list-container">
+          <h3>Liste</h3>
             {users.map((user,index) =>
-            <div key={index}> {user}</div>
-      )}
-
+            <div key={index}> {user}</div> )}
+            
+            </div>
+         
       <hr />
-      ad:{name} yaş:{age}
-      <div>
+      
+      <div className="change-container">
+        ad:{name} yaş:{age}
         <button onClick={()=>{setName("ali")}}> isim değiştir </button>
-        </div>
+        
         <div>
           <p>{count}</p>
             <button onClick={arttir}>arttır</button>
             <button onClick={azalt}>azalt</button>
         </div>
+        </div>
+        <hr />
+        <div className="form-container"><Form/></div>
+        
     </div>
   )
 }
