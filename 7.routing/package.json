@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "form": "^0.2.5",
+    "formik": "^2.4.6",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^6.30.1"
