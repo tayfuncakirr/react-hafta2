@@ -30,9 +30,10 @@ function Contact() {
   });
   
   return (
-    <div>
-        <h2>İletişim</h2>
-
+    <div className='contact-container'>
+      
+    <div className='form-container'>
+      <h2>İletişim</h2>
         <form onSubmit={handleSubmit} className='form'>
           <div>
             <label htmlFor="firstName">First Name</label>
@@ -45,10 +46,10 @@ function Contact() {
               onChange={handleChange("firstName")}
               onBlur={handleBlur("firstName")}
              />
-             {
+          </div>
+          {
               errors.firstName && touched.firstName && <div className='error'>{errors.firstName}</div>
              }
-          </div>
           <div>
           <label htmlFor="lastName">Last Name</label>
             <input 
@@ -60,10 +61,10 @@ function Contact() {
               onChange={handleChange("lastName")}
               onBlur={handleBlur("lastName")}
              />
-             {
+          </div>
+          {
               errors.lastName && touched.lastName && <div className="error">{errors.lastName}</div>
              }
-          </div>
           <div>
           <label htmlFor="email">email</label>
             <input 
@@ -75,10 +76,10 @@ function Contact() {
               onChange={handleChange("email")}
               onBlur={handleBlur("email")}
              />
-             {
+          </div>
+          {
               errors.email && touched.email && <div className="error">{errors.email}</div>
              }
-          </div>
           <div>
           <label htmlFor="message">message</label>
             <textarea
@@ -90,12 +91,13 @@ function Contact() {
               onChange={handleChange("message")}
               onBlur={handleBlur("message")}
              />
-             {
+          </div>
+           {
               errors.message && touched.message && <div className="error">{errors.message}</div>
              }
-          </div>
           <button type='submit' disabled={isSubmitting}>Submit</button>
         </form>
+    </div>
     </div>
   )
 }
