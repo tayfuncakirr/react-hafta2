@@ -37,7 +37,7 @@ function App() {
         type="text"
         placeholder='Todo Giriniz...'
         value={inputValue}
-        onChange={(event)=> setInputValue(event.target.value.trim())}
+        onChange={(event)=> setInputValue(event.target.value)}
       />
       <button className='add-btn' onClick={addTodo}>Ekle</button>
       <ul className='ul-list'>

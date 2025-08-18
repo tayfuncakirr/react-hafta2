@@ -107,7 +107,7 @@ body {
   -ms-transition: .2s ease-out;
   -o-transition: .2s ease-out;
 }
-.list-container .delete-btn:hover{
+.list-container .delete-all-btn:hover{
   background-color: #444444;
 }
 
