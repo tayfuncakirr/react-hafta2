@@ -11,6 +11,10 @@ function App() {
    const [gameOver, setGameOver] = useState(false); 
    const [startTime, setStartTime] = useState(null);
    const [lastTime, setLastTime] = useState(0);
+   const [playerName, setPlayerName] = useState("");
+   const [currentPlayer, setCurrentPlayer] = useState("");
+   const [players, setPlayers] = useState ([]);
+   const [scores, setScores] = useState ([]);
 
    useEffect(()=>{
     let timer;
@@ -36,6 +40,10 @@ function App() {
    if (num === secretNumber){
     setMessage(`Doğru! ${attemps + 1} denemede, ${lastTime} saniyede bildin.`);
     setGameOver(true);
+    setScores((prev) =>[
+      ...prev,
+      {name: currentPlayer, attemps:attemps + 1, time:lastTime}
+    ]);
    }
    else if (num < secretNumber){
     setMessage("Daha yüksek bir sayı dene.");
@@ -47,22 +55,55 @@ function App() {
    };
 
    const restartGame = () =>{
-    setSecretNumber(generateNumber);
+    setSecretNumber(generateNumber());
     setGuess("");
     setMessage("");
     setAttemps(0);
     setGameOver(false);
     setStartTime(null);
     setLastTime(0);
+
    };
 
   return (
     <div className='container'>
+      <div>
+        <label> Oyuncu: </label>
+        <input
+          type="text"
+          value={playerName}
+          onChange={(e) => setPlayerName(e.target.value)}
+          placeholder='Oyuncu...'
+          />
+          <button className='player-btn'
+          onClick={()=>{
+            if (!playerName) return;
+            setCurrentPlayer(playerName); // aktif oyuncu
+            if (!players.includes(playerName)) {
+              setPlayers([...players, playerName]); // yeni ism ekle
+            }
+            setPlayerName("");
+          }}> Başla</button>
+          <select 
+           onChange={(e) => setCurrentPlayer(e.target.value)}
+           value={currentPlayer}>
+            <option value="">Oyuncu Seç</option>
+            {players.map((player, index)=>(
+              <option value={player} key={index}>{player}</option>
+            ))}
+
+          </select>
+     </div>
      <h1>Sayı Tahmin Oyunu</h1>
-     <div className="scor-container">
-      <p><b>Deneme: </b>{attemps}</p>
-      <p><b>Süre: </b>{lastTime} sn</p>
-      
+     <div className="score-container">
+      <h3>Skorlar</h3>
+  <ul>
+    {scores.map((s, i) => (
+      <li key={i}>
+        {s.name}: {s.attemps} deneme, {s.time} sn
+      </li>
+    ))}
+  </ul>
      </div>
      {!gameOver ? (
       <div>
@@ -72,9 +113,10 @@ function App() {
          value={guess}
          onChange={(e)=> setGuess(e.target.value)}
          placeholder='Tahmin gir'
+         onKeyDown={(e) => e.key === "Enter" && handleGuess()}
         />
         <button onClick={handleGuess}>Tahmin Et</button>
-        <p>{message}</p>
+        <p style={{color:"red"}}>{message}</p>
         <p>Toplam Deneme: {attemps}</p>
         <p>Toplam Süre: {lastTime} sn</p>
 
